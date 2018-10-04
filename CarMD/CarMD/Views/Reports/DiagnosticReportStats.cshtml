@@ -1,0 +1,206 @@
+﻿
+@{
+    ViewBag.Title = "Diagnostic Report Stats";
+}
+
+<div class="container-fluid">
+    <div class="row my-2">
+        <div class="col-md">
+            <h2>Diagnostic Report Status</h2>
+        </div>
+    </div>
+    <div class="border p-3">
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                @Html.Label("System") <br />                
+                <input id="SystemList_ddl" value="1" style="width: 70%; margin-bottom:15px;" />
+            </div>
+
+            <div class="col-md-4">
+                @Html.Label("Make")<br />                
+                <input id="MakeList_ddl" value="1" style="width: 70%; margin-bottom:15px;" />
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Date Range from") <br />
+                @Html.Kendo().DatePicker().Name("dpkDateRangeFrom")
+            </div>
+        </div>
+
+        <div class="row mb-3">
+
+            <div class="col-md-4">
+                @Html.Label("Date Range to")<br />
+                @Html.Kendo().DatePicker().Name("dpkDateRangeTo")
+                @Html.Partial("_DateRangeSelection")
+            </div>
+
+            <div class="col-md-4">
+                <div class="mt-4">
+                    @Html.Kendo().Button().Name("btnRunReport").Content("Run Report").HtmlAttributes(new { type = "button", @class = "k-primary k-button" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-12">
+            @*<div id="gridDiagnosticReportStatus"></div>*@
+            @(Html.Kendo().Grid<CarMD.Shared.Models.DiagnosticReportsStatsCaculatedValues>()
+                        .Name("grid")
+                        .Columns(columns =>
+                        {
+                            columns.Bound(p => p.DescriptionList).Title("Description");
+                            columns.Bound(p => p.DaysList).Title("Day");
+                            columns.Bound(p => p.WeeklyList).Title("Week");
+                            columns.Bound(p => p.MonthlyList).Title("Month");
+                            columns.Bound(p => p.QuarterlyList).Title("Quarter");
+                            columns.Bound(p => p.YearlyList).Title("Year");
+                            columns.Bound(p => p.TotalList).Title("Total");
+
+                        })                        
+                        .Pageable()
+                        .Sortable()
+                        //.AutoBind(false)
+                        .DataSource(dataSource => dataSource
+                        .Ajax()
+                        .ServerOperation(true)
+                        .Batch(true)
+                        .Model(model =>
+                        {
+                            model.Id(p => p.DescriptionList);
+                        })
+                        .PageSize(25)
+                        .Events(events => events.Error("error_handler"))
+                        .Read(read => read.Action("GetDiagnosticReportsStatsGrid", "Reports").Data("getParameter"))
+
+                        )
+            )
+        </div>
+    </div>
+    <div id="loaderImg" class="modal"></div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        GetSystemList();
+        GetMakeList();
+    });
+
+    var SystemList = [];
+    var MakeList = [];
+    var selectMakeList;
+
+    function BindSystemDropdown() {
+        // create DropDownList from input HTML element
+        $("#SystemList_ddl").kendoDropDownList({
+            dataTextField: "Value",
+            dataValueField: "Id",
+            dataSource: SystemList,
+            index: 0
+        });
+        var color = $("#SystemList_ddl").data("kendoDropDownList");
+        color.select(0);
+    }
+
+    // Bind Make dropdown
+    function GetSystemList() {
+        $.ajax({
+            url: "/Reports/GetDiagnosticReportsStatsSystemList",
+            type: "GET",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            dataType: "json",
+            beforeSend: function () {
+                $("#loaderImg").show();
+            },
+            success: function (result) {
+               
+                SystemList = result;
+                BindSystemDropdown();
+            },
+            error: function (httpRequest, textStatus, errorThrown) {
+               
+            }
+        });
+    }
+
+    function BindMakeDropdown() {
+        // create DropDownList from input HTML element
+
+        selectMakeList = $("#MakeList_ddl").kendoMultiSelect({
+            dataTextField: "Value",
+            dataValueField: "Value",
+            dataSource: MakeList,
+            autoClose: false,
+            index: 0
+        }).data("kendoMultiSelect");
+        
+    }
+
+    // Bind Make dropdown
+    function GetMakeList() {
+        $.ajax({
+            url: "/Reports/GetMakeList",
+            type: "GET",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            dataType: "json",
+            beforeSend: function () {
+                $("#loaderImg").show();
+            },
+            success: function (result) {
+                $('#loaderImg').hide();
+                MakeList = result;
+                BindMakeDropdown();
+            },
+            error: function (httpRequest, textStatus, errorThrown) {
+
+            },
+            complete: function () {
+                $('#loaderImg').hide();
+            }
+        });
+    }
+
+    function getParameter() {
+        var makesSelectedList = [];
+        $.each($("#MakeList_ddl option:selected"), function () {
+            makesSelectedList.push($(this).val());
+        });
+        return {                        
+            MakesList: makesSelectedList.toString(),
+            ExternalSystemId: $('#SystemList_ddl').val() === "No Selection" ? null : $('#SystemList_ddl').val(),
+            StartDateUTC: $('#dpkDateRangeFrom').val(),
+            EndDateUTC: $('#dpkDateRangeTo').val()
+        };
+    }
+    $('#btnRunReport').click(function () {
+
+        var grid = $("#grid").data("kendoGrid");
+        grid.dataSource.read();
+       
+        //$("#grid").data("kendoGrid").dataSource.page(1)
+        //$("#grid").data("kendoGrid").dataSource.read();
+        //$("#grid").data("kendoGrid").refresh();
+    });
+
+    //show server errors if any
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+
+        }
+    }
+</script>
+

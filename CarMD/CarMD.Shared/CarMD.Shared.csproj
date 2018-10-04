@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E9D40F2E-E9CC-4C70-8017-768B34E4236E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarMD.Shared</RootNamespace>
+    <AssemblyName>CarMD.Shared</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\lib\KENDOUIMVC\2018.2.516.545.Trial\Kendo.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Encryption\ChiltonAuthorizationHeader.cs" />
+    <Compile Include="Encryption\Encrypt.cs" />
+    <Compile Include="Encryption\InnovaContentDelivery.cs" />
+    <Compile Include="Encryption\RSACrypt.cs" />
+    <Compile Include="Models\AdminUserListModel.cs" />
+    <Compile Include="Models\AdminUserModel.cs" />
+    <Compile Include="Models\AdminUserStatisticModel.cs" />
+    <Compile Include="Models\AutoZoneBlackBoxModel.cs" />
+    <Compile Include="Models\ChiltonDTCModel.cs" />
+    <Compile Include="Models\CodemasterIDPartLocationRequest.cs" />
+    <Compile Include="Models\DiagnosticReportsStatsModel.cs" />
+    <Compile Include="Models\DiagnosticReportTrendsModel.cs" />
+    <Compile Include="Models\DTCDistributionReport.cs" />
+    <Compile Include="Models\DTCLookupViewModel.cs" />
+    <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\EstimatedEarnings.cs" />
+    <Compile Include="Models\FixDetailViewModel.cs" />
+    <Compile Include="Models\FixDistributionReportModel.cs" />
+    <Compile Include="Models\FixDTCRowModel.cs" />
+    <Compile Include="Models\FixEditViewModel.cs" />
+    <Compile Include="Models\FixImportDataModel.cs" />
+    <Compile Include="Models\FixImportModel.cs" />
+    <Compile Include="Models\FixNameFixesModel.cs" />
+    <Compile Include="Models\FixListRequestModel.cs" />
+    <Compile Include="Models\FixListRowModel.cs" />
+    <Compile Include="Models\FixNameFragmentModel.cs" />
+    <Compile Include="Models\FixNameViewModel.cs" />
+    <Compile Include="Models\FixPartList.cs" />
+    <Compile Include="Models\FixPendingList.cs" />
+    <Compile Include="Models\FixSaveRequestModel.cs" />
+    <Compile Include="Models\GridViewBindResult.cs" />
+    <Compile Include="Models\MaintenancePlanEditViewModel.cs" />
+    <Compile Include="Models\MaintenancePlanRequestModel.cs" />
+    <Compile Include="Models\MaintenancePlanRowModel.cs" />
+    <Compile Include="Models\MasterTech.cs" />
+    <Compile Include="Models\NoFixDiagnosticReport.cs" />
+    <Compile Include="Models\ODBFixModel.cs" />
+    <Compile Include="Models\PartList.cs" />
+    <Compile Include="Models\PartListRequestModel.cs" />
+    <Compile Include="Models\PartNameGridModel.cs" />
+    <Compile Include="Models\PendingFixRequestModel.cs" />
+    <Compile Include="Models\PredictiveDiagnosticReportModel.cs" />
+    <Compile Include="Models\RecallsReportModel.cs" />
+    <Compile Include="Models\RepairProcedureTesterModel.cs" />
+    <Compile Include="Models\ReviewReportsModel.cs" />
+    <Compile Include="Models\RoleModel.cs" />
+    <Compile Include="Models\ServiceNameListViewModel.cs" />
+    <Compile Include="Models\SymptomDiagnosticFixes.cs" />
+    <Compile Include="Models\SymptomList.cs" />
+    <Compile Include="Models\SymptomRowModel.cs" />
+    <Compile Include="Models\TechnicianModel.cs" />
+    <Compile Include="Models\UsedCarReport.cs" />
+    <Compile Include="Models\UserDetails.cs" />
+    <Compile Include="Models\UserDiagnosticReportStatisticsModel.cs" />
+    <Compile Include="Models\UserLoginModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\VehicleDTCCodeModel.cs" />
+    <Compile Include="Models\VehicleSearchViewModel.cs" />
+    <Compile Include="Models\VehicleWarrantyViewModel.cs" />
+    <Compile Include="Models\VinTesterViewModel.cs" />
+    <Compile Include="Models\WhatFixedMyCarModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

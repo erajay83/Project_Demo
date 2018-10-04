@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "User List";
+}
+
+<h1 class="pageheading">User List </h1>
+<div class="">
+    <div class="search-controls">
+        <div class="row row-space">
+            <div class="col-md-4">
+                <div class="mt-4">
+                    @(Html.Kendo().CheckBox().Name("chkUsers").Checked(true).Label("Hide non active users"))
+                </div>
+            </div>
+            <div class="col-md-4">
+                @Html.Kendo().Button().Name("btnRefresh").Content("Refresh").HtmlAttributes(new { @class = "k-primary mr-2 serach-btn-align" })
+            </div>
+        </div>
+    </div>
+    <div class="row margin-top-15">
+        <div class="col-md-12">
+            @(Html.Kendo().Grid<CarMD.Shared.Models.AdminUserListModel>
+    ()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.FirstName).Title("First Name").Width(120);
+        columns.Bound(p => p.LastName).Title("Last Name").Width(120);
+        columns.Bound(p => p.EmailAddress).Title("Email Address").Width(150);
+        columns.Bound(p => p.PhoneNumber).Title("Phone Number").Width(120);
+        
+        columns.Bound(p => p.IsSystemAdministrator).Title("System<br/>Administrator").Width(100);
+        columns.Bound(p => p.LastLoginDateTimeUTC).Title("Log On Time").Width(100);
+        columns.Bound(p => p.IsActive).Title("Active ").Width(70);
+        columns.Bound(p => p.ApplicationName).Title("Application<br/> Type").Width(120);
+
+        //columns.Command(command => { command.Edit(); command.Destroy().HtmlAttributes(new { @class = "margin-left-15" }); }).Width(250).Title("Action");
+        columns.Command(command => { command.Custom("Edit").Click("EditRedirect"); command.Destroy().HtmlAttributes(new { @class = "margin-left-15" }); }).Width(250).Title("Action");
+    })
+    .ToolBar(toolbar => toolbar.Custom().Text("Add User").Action("AdminUserAddEdit", "User").HtmlAttributes(new { id = "customCommand", @class = "k-primary" }))
+    //.ToolBar(toolbar => toolbar.Create().Text("Add Admin User").HtmlAttributes((new { @class = "k-primary" })))
+    .Editable(editable => editable.Mode(GridEditMode.InLine).ConfirmDelete("Do you want to delete record?").DisplayDeleteConfirmation("Do you want to delete record?"))
+    .Pageable(pageable => pageable.PageSizes(new[] { "10", "25", "50", "75", "100" }))
+    .Sortable()
+    // .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+    .HtmlAttributes(new { /*style = "height:603px;"*/ })
+    .DataSource(dataSource => dataSource
+    .Ajax()
+    .ServerOperation(true)
+    .Batch(true)
+    .Model(model =>
+    {
+        model.Id(p => p.AdminUserId);
+        model.Field(p => p.LastLoginDateTimeUTC).Editable(false);
+    })
+    .PageSize(10)
+    .Events(events => events.Error("error_handler"))
+    .Read(read => read.Action("GetAdminUserListForGrid", "User").Data("getParameter"))
+    .Update(update => update.Action("UpdateAdminUserListDetail", "User"))
+    .Destroy(delete => delete.Action("DeleteAdminUserList", "User"))
+    .Create(create => create.Action("AddAdminUserListDetail", "User"))
+    )
+    )
+</div>
+    </div>
+</div>
+<div id="loaderImg" class="modal"></div>
+
+<script type="text/javascript">
+    function getParameter() {
+        return {
+            IsActive: $('#chkUsers').is(':checked')
+        };
+    }
+    $('#btnRefresh').click(function () {
+        //$("#grid").data("kendoGrid").dataSource.page(1)
+        //$("#grid").data("kendoGrid").dataSource.read();
+        //$("#grid").data("kendoGrid").refresh();
+
+        var grid = $("#grid").data("kendoGrid");
+        grid.dataSource.read();        
+    });
+
+    $('#customCommand').click(function (e) {
+        $('#loaderImg').show();
+        location.href = '/User/AdminUserAddEdit?Id=0';
+    });
+    //show server errors if any
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+        }
+    }
+
+    function EditRedirect(e) {
+        $('#loaderImg').show();
+        var dataItem = $("#grid").data("kendoGrid").dataItem(e.target.closest("tr"));
+        console.log(dataItem);
+        location.href = '/User/AdminUserAddEdit?Id=' + dataItem.AdminUserId;
+    }
+</script>

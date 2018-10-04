@@ -1,0 +1,239 @@
+﻿.header {
+    background-color: #4c93cf;
+    font-size: 1.0rem !important;
+    font-weight: 500 !important;
+
+}
+
+#loader {
+    background-image: url(../../Images/Global/ajax-loader.gif);
+    background-position: center;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    z-index: 99999;
+    opacity: .9;
+    display: none;
+}
+
+    .header .inner-header {
+        padding: 15px 0;
+        display: inline-block;
+        width: 100%
+    }
+
+.footer {
+    background: #2d2e30;
+    /*padding: 20px;*/
+    text-align: center;
+    color: #FFF;
+    font-family: Oswald, sans-serif;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    /*line-height: 2*/
+}
+
+
+.brand {
+    background: url('../../Images/Global/OBD-logo.png') no-repeat;
+    width: 224px;
+    height: 62px;
+    display: inline-block;
+    text-indent: -999em;
+    background-size: 224px 62px;
+}
+
+fieldset {
+    border: solid 1px #DDD !important;
+    padding: 10px 10px 10px 10px;
+    border-bottom: none;
+}
+
+legend {
+    width: auto !important;
+    border: none;
+    font-size: 14px;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    line-height: 1em !important;
+}
+
+input.k-textbox, input.k-input, span.k-dropdown-wrap {
+    height: 2em !important;
+}
+
+
+h2.pageheading {
+    margin-left: 2px;
+    margin-right: 13px;
+    padding-left: 13px;
+    color: black;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    /*background-color: dodgerblue;*/
+}
+
+.search-controls {
+    border: 1px solid lightgray;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.required-field {
+    color: red;
+    font-weight: bold;
+}
+
+.row-space {
+    margin-bottom: 10px;
+}
+/*   ---  Loading image during data load ---    */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /*background: rgba( 255, 255, 255, .8 )url('../../Images/Global/ajax-loader.gif') 50% 50% no-repeat;*/
+    background: rgba(128, 128, 128, .9)url('../../Images/Global/ajax-loader.gif') 50% 50% no-repeat;
+}
+
+.errormsg-style {
+    color: red;
+    font-size: 1.1em;
+}
+
+body.loading {
+    overflow: hidden;
+}
+
+
+    body.loading .modal {
+        display: block;
+    }
+
+.margin-top-15 {
+    margin-top: 15px;
+}
+
+.margin-left-15 {
+    margin-left: 15px !important;
+}
+/*************************************Menu Css *********************************************/
+
+.footer .container {
+    display: inline;
+}
+
+#navigation-menu {
+    margin-bottom: 5px;
+}
+
+/*.menu-contrl {
+            float:left;
+        }*/
+
+#menu-inside {
+    padding-top: 21px;
+    display: inline-block;
+    left: 270px;
+    position: absolute;
+    background-color: #4c93cf;
+}
+
+.k-menu .k-item, .k-menu.k-header {
+    color: white;
+    background-color: #4c93cf;
+}
+/*#menu-inside .k-item {
+    background-color: #c7edfc;
+}*/
+#menu-inside .k-state-hover, #menu-inside .k-link:hover {
+    /*background-color: #1c75c1 !important;*/
+    background-color: white !important;
+    color: black !important;
+}
+
+.k-menu .k-state-hover .k-link.k-state-active {
+    /*background-color: #1c75c1 !important;*/
+    background-color: white !important;
+    color: #4c93cf !important;
+    /*background-color: #c7edfc !important;*/
+    /*color: black !important;*/
+}
+
+.k-primary {
+    height: 2em !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
+.serach-btn-align {
+    margin-top: 8px !important;
+    margin-bottom: 15px !important;
+}
+
+.k-grid-toolbar {
+    padding: 15px !important;
+}
+
+.k-label20 {
+    border-color: #d5d5d5;
+    background-color: #e9e9e9;
+    display: inline-block;
+    vertical-align: middle;
+    border-width: 1px;
+    border-style: solid;
+    position: relative;
+    width: 20em;
+    overflow: visible;
+    padding: 5px;
+    line-height: 1.5rem;
+    min-height: 1.5rem
+}
+
+.k-panelbar .k-tabstrip > .k-content, .k-tabstrip > .k-content {
+    margin: 0px 0.00em 1.3em !important;
+}
+
+
+/*   --- End - Loading image during data load ---    */
+
+/* aaded on 30-08-2018*/
+.content-formet{ font-size: 0.9rem; line-height: 20px; margin: 0; }
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+.k-animation-container > .k-widget.k-tooltip {
+    max-width: 400px;
+    width: 100%;
+    max-height: 300px;
+    height: 100%;
+    min-height: 50px !important;
+}
+
+.k-animation-container > .k-tooltip {
+    background: #ebf7fd !important;
+    text-align: left !important;
+}
+
+.handcursor {
+    cursor: grab;
+}
+

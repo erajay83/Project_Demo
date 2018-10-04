@@ -1,0 +1,217 @@
+﻿
+@{
+    ViewBag.Title = "Diagnostic Report Trends Report";
+}
+<script src="~/Scripts/ConvertToCSV.js"></script>
+<div class="container-fluid">
+    <div class="row my-2">
+        <div class="col-md">
+            <h2>Diagnostic Report Trends Report</h2>
+        </div>
+    </div>
+    <div class="border p-3">
+        <div class="row margin-top-15">
+            <div class="col-md-12">
+                <p>This report provides totals for the total number of reports created and the number of those reports that received a fix over a given time period.</p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                @Html.Label("Systems") <br />
+                @*@Html.Kendo().DropDownList().Name("ddnSystem").OptionLabel("Select System")*@
+                <input id="SystemList_ddl" value="1" style="width: 70%; margin-bottom:15px;"/>
+            </div>
+
+            <div class="col-md-4">
+                @Html.Label("Date Range from") <br />
+                @Html.Kendo().DatePicker().Name("dpkDateRangeFrom")
+            </div>
+
+            <div class="col-md-4">
+                @Html.Label("Date Range to")<br />
+                @Html.Kendo().DatePicker().Name("dpkDateRangeTo")
+                @Html.Partial("_DateRangeSelection")
+            </div>
+        </div>
+        <div class="row mb-3 margin-top-15">
+            <div class="col-md-4">
+                @Html.Kendo().DropDownList().Name("ddnGroupBy").OptionLabel("Group By").BindTo(new List<SelectListItem>
+                    () {new SelectListItem() {
+                    Text = "Year",
+                    Value = "0"
+                    },
+                    new SelectListItem() {
+                    Text = "Year/Month",
+                    Value = "1"
+                    },
+                    new SelectListItem() {
+                    Text = "Year/Month/Day",
+                    Value = "2"
+                    }}).Value("0").HtmlAttributes(new {style="width:70%" })
+            </div>
+            <div class="col-md-4">
+
+                @Html.Kendo().Button().Name("btnRunReport").Content("Run Report").HtmlAttributes(new { type = "button", @class = "k-primary k-button" })
+                @Html.Kendo().Button().Name("btnExportToExcel").Content("Download Report as Excel").HtmlAttributes(new { type = "button", @class = "k-primary k-button" })
+            </div>
+            <div class="col-md-4">                
+
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+            @(Html.Kendo().Grid<CarMD.Shared.Models.DiagnosticReportTrendsGrid>()
+                                                    .Name("grid")
+                                                    .Columns(columns =>
+                                                    {
+                                                        columns.Bound(p => p.ReportDate).Title("Date Group");
+                                                        columns.Bound(p => p.TotalFixReports).Title("Fix Provided Immediately");
+                                                        columns.Bound(p => p.TotalFixProvidedLaterReports).Title("Fix Provided Later");
+                                                        columns.Bound(p => p.TotalNoFixReports).Title("No Fix Available");
+                                                        columns.Bound(p => p.TotalReports).Title("Total Reports");
+                                                    })
+
+                                                    .Pageable(pageable => pageable.PageSizes(new[] { "10", "25", "50", "75", "100" }))
+                                                    .Sortable()
+                                                    .HtmlAttributes(new { })
+                                                    .DataSource(dataSource => dataSource
+                                                    .Ajax()
+                                                    .ServerOperation(true)
+                                                    .Batch(true)
+                                                    .Model(model =>
+                                                    {
+                                                        model.Id(p => p.ReportDate);
+                                                    })
+                                                    .PageSize(10)
+                                                    .Events(events => events.Error("error_handler"))
+                                                    .Read(read => read.Action("GetDiagnosticReportTrendsGrid", "Reports").Data("getParameter"))
+                                                    )
+
+            )
+        </div>
+    </div>
+    <div id="loaderImg" class="modal"></div>
+</div>
+
+
+<script>
+     
+    $(document).ready(function () {
+        $("#btnRunReport").click(function () {
+
+            var grid = $("#grid").data("kendoGrid");
+            grid.dataSource.read();
+            
+            //$("#grid").data("kendoGrid").dataSource.page(1)
+            //$("#grid").data("kendoGrid").dataSource.read();
+            //$("#grid").data("kendoGrid").refresh();
+        });
+
+        GetSystemList();
+
+        $('#btnExportToExcel').click(function () {
+            ExportExcel();
+        });
+    });
+    function getParameter() {
+        return {
+            SystemID: $("#SystemList_ddl").val() == "No Selection" ? "" : $("#SystemList_ddl").val(),          
+            StartDateTime: $('#dpkDateRangeFrom').val(),
+            EndDateTime: $('#dpkDateRangeTo').val(),
+            GroupBy: $('#ddnGroupBy').val()            
+        };
+    }
+
+    //show server errors if any
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+
+        }
+    }
+
+    var SystemList = [];
+    // Bind Make dropdown
+    function GetSystemList() {
+        $.ajax({
+            url: "/Reports/GetSystemList",
+            type: "GET",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            dataType: "json",
+            beforeSend: function () {
+                $("#loaderImg").show();
+            },
+            success: function (result) {
+                $('#loaderImg').hide();
+                SystemList = result;
+                BindSystemDropdown();
+            },
+            error: function (httpRequest, textStatus, errorThrown) {
+                $('#loaderImg').hide();
+            }            
+        });
+    }
+    
+    function BindSystemDropdown() {
+        // create DropDownList from input HTML element
+        $("#SystemList_ddl").kendoDropDownList({
+            dataTextField: "Value",
+            dataValueField: "Id",
+            dataSource: SystemList,
+            index: 0        
+        });
+        var color = $("#SystemList_ddl").data("kendoDropDownList");
+        color.select(0);        
+    }
+
+    function ExportExcel() {
+        
+        GetExcelData();
+    }
+
+    function GetExcelData() {
+        var jsonData = {
+            SystemID: $("#SystemList_ddl").val() == "No Selection" ? "" : $("#SystemList_ddl").val(),
+            StartDateTime: $('#dpkDateRangeFrom').val(),
+            EndDateTime: $('#dpkDateRangeTo').val(),
+            GroupBy: $('#ddnGroupBy').val() 
+        };
+        $.ajax({
+            url: "/Reports/GetExcelJason",
+            type: "POST",
+            data: JSON.stringify({ 'model': jsonData }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            beforeSend: function () {
+                $("#loaderImg").show();
+            },
+            success: function (result) {
+
+                    // Generate Excelreport
+                    JSONToCSVConvertor(JSON.stringify(result), "DiagnosticReportTrends", true);
+                            
+            },
+            error: function (httpRequest, textStatus, errorThrown) {
+                alert("Error: " + textStatus + " " + errorThrown + " " + httpRequest);
+            },
+            complete: function () {
+                $('#loaderImg').hide();
+            }
+        });
+    }
+
+</script>
+

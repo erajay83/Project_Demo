@@ -1,0 +1,1432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{36F633EF-706D-46CE-BBF8-444011DB152C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarMD</RootNamespace>
+    <AssemblyName>CarMD</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAccessLayer">
+      <HintPath>..\DataAccessLayer\bin\Debug\DataAccessLayer.exe</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\lib\KENDOUIMVC\2018.2.620.545\Kendo.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.6\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API\Client.cs" />
+    <Compile Include="API\Constants.cs" />
+    <Compile Include="API\Get.cs" />
+    <Compile Include="API\Post.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Auth\AuthorizeUser.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Admin\TechnicianController.cs" />
+    <Compile Include="Controllers\Admin\UserController.cs" />
+    <Compile Include="Controllers\Customers\CustomersController.cs" />
+    <Compile Include="Controllers\DTC\DtcCodeListController.cs" />
+    <Compile Include="Controllers\DTC\DTCController.cs" />
+    <Compile Include="Controllers\DTC\ChiltonDTCDefinitionListController.cs" />
+    <Compile Include="Controllers\Fixes\FixesPendingListController.cs" />
+    <Compile Include="Controllers\Fixes\FixListController.cs" />
+    <Compile Include="Controllers\Fixes\GetFixController.cs" />
+    <Compile Include="Controllers\Fixes\OdbFixSummaryController.cs" />
+    <Compile Include="Controllers\Fixes\PendingFixDetailsController.cs" />
+    <Compile Include="Controllers\FixNameFixes\FixNameFixesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NavigationController.cs" />
+    <Compile Include="Controllers\OdbFixSummary\OdbFixController.cs" />
+    <Compile Include="Controllers\Reports\AdminUserStatisticsController.cs" />
+    <Compile Include="Controllers\Reports\AutoZoneBlackBoxReportController.cs" />
+    <Compile Include="Controllers\Reports\MasterTechEstimatedEarningsController.cs" />
+    <Compile Include="Controllers\Reports\SymptomDiagnosticExistingFixesController.cs" />
+    <Compile Include="Controllers\Reports\UserDiagnosticReportController.cs" />
+    <Compile Include="Controllers\Reports\DtcDistributionReportController.cs" />
+    <Compile Include="Controllers\Reports\EstimatedEarningsController.cs" />
+    <Compile Include="Controllers\Repairs\RepairProcedureTesterController.cs" />
+    <Compile Include="Controllers\Reports\FixDistributionReportController.cs" />
+    <Compile Include="Controllers\Reports\PredictiveDiagnosticReportController.cs" />
+    <Compile Include="Controllers\Reports\RecallsReportController.cs" />
+    <Compile Include="Controllers\Reports\ReportsController.cs" />
+    <Compile Include="Controllers\Reports\UsedCarReportController.cs" />
+    <Compile Include="Controllers\Reports\VehicleReliabilityReportController.cs" />
+    <Compile Include="Controllers\RoleManagement\RoleManagementController.cs" />
+    <Compile Include="Controllers\Tools\ToolsController.cs" />
+    <Compile Include="Controllers\Reports\WhatFixedMyCarController.cs" />
+    <Compile Include="Controllers\Vehicle\VehicleWarrantyController.cs" />
+    <Compile Include="Controllers\Reports\MaintenancePlanController.cs" />
+    <Compile Include="Controllers\Reports\NoFixReportController.cs" />
+    <Compile Include="Controllers\Reports\PartListController.cs" />
+    <Compile Include="Controllers\Reports\PartNameListController.cs" />
+    <Compile Include="Controllers\Reports\ServiceNameComponentsController.cs" />
+    <Compile Include="Controllers\Reports\ServiceNameListController.cs" />
+    <Compile Include="Controllers\Reports\SymptomController.cs" />
+    <Compile Include="Controllers\Reports\UpdateNoFixReportsController.cs" />
+    <Compile Include="Controllers\Reports\VinTesterController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\MenuGenerationHelper.cs" />
+    <Compile Include="Helpers\Token.cs" />
+    <Compile Include="Models\AdminUserViewModel.cs" />
+    <Compile Include="Models\DTCLookupModel.cs" />
+    <Compile Include="Models\ErrorCodeFileDisplayModel.cs" />
+    <Compile Include="Models\FixListViewModel.cs" />
+    <Compile Include="Models\MaintenancePlanViewModel.cs" />
+    <Compile Include="Models\MasterTechStatViewModel.cs" />
+    <Compile Include="Models\PartMake.cs" />
+    <Compile Include="Models\PartNameViewModel.cs" />
+    <Compile Include="Models\PartViewModel.cs" />
+    <Compile Include="Models\RecallsReportViewModel.cs" />
+    <Compile Include="Models\ReviewReportsViewModel.cs" />
+    <Compile Include="Models\Symptom.cs" />
+    <Compile Include="Models\VehicleWarrantyModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Auth\UserDetails.xml" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Common\common.css" />
+    <Content Include="Content\Default\loading-image.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\MIL\acura-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\MIL\acura-mil02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-cat01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-cat02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-cat03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-ccm01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-ccm02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-ccm03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-dlc1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-egr01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-egr02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-egr03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-evap01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-evap02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-evap03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-evap04.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-fuel01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-misf01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-misf02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-o2s-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-o2s-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-o2s-03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-o2shtr-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-o2shtr-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-o2shtr-03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-o2shtr-04.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-pcm104.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-pcm108.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Acura\Monitor\acura-pcm96.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\MIL\chrysler-mil01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\MIL\skim-key.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\MIL\skim-sys.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrylser-evap02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-cat01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-cat02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-ccm01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-ccm02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-ccm03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-dlc1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-ect01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-egr01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-egr02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-evap01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-evap02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-evap03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-evap04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-fuel01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-misf01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-misf02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-o2s01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-o2sh01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-o2sh02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-o2sh03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-o2sh04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-sair01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chrysler-sair02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chysler-evap02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\chysler-evap03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\pcm-119-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\pcm-60-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\pcm-80-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Chrysler\Monitor\pcm-96-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\MIL\daewoo-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-cat01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-cat02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-ccm01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-ccm02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-ccm03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-dlc1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-egr01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-egr02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-evap01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-evap02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-fuel01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-misf01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-misf02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-o2s-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-o2s-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-o2shtr-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-o2shtr-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-pcm64-1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-pcm64-2.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Daewoo\Monitor\daewoo-pcm96-3.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\MIL\chrysler-mil01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\MIL\skim-key.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\MIL\skim-sys.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-cat01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-cat02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-ccm01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-ccm02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-ccm03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-dlc1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-ect01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-egr01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-egr02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-evap01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-evap02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-evap03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-evap04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-fuel01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-misf01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-misf02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-o2s01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-o2sh01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-o2sh02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-o2sh03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-o2sh04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-sair01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\chrysler-sair02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\pcm-119-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\pcm-60-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\pcm-80-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Dodge\Monitor\pcm-96-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\MIL\chrysler-mil01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\MIL\skim-key.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\MIL\skim-sys.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-cat01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-cat02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-ccm01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-ccm02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-ccm03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-dlc1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-ect01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-egr01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-egr02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-evap01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-evap02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-evap03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-evap04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-fuel01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-misf01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-misf02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-o2s01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-o2sh01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-o2sh02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-o2sh03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-o2sh04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-sair01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\chrysler-sair02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\pcm-119-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\pcm-60-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\pcm-80-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Eagle\Monitor\pcm-96-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\MIL\ford-mil01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\MIL\ford-pats1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\MIL\ford-pats2.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-cat01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-cat02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-ccm01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-ccm02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-ccm03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-dlc1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-ect01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-egr01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-egr02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-egr03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-egr04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-evap01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-evap02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-evap03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-evap04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-evap05.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-evap06.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-fuel01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-misf01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-misf02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-o2s01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-o2s02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-o2s03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-o2s04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-sair01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-sair02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\ford-sair03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\pcm-104-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Ford\Monitor\pcm-150-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\MIL\gm-mil01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\MIL\gm-mil02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\MIL\gm-mil03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\MIL\gm-mil04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\MIL\hummer-mil01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\MIL\hummer-mil02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\catera1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\catera2.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-cat01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-cat02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-ccm01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-ccm02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-ccm03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-dlc1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-egr01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-egr02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-evap01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-evap02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-fuel01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-misf01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-misf02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-o2s-01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-o2s-02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-o2shtr-01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-o2shtr-02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-o2shtr-03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\geo-pcm64-1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-air01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-air02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-cat01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-cat02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-ccm01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-ccm02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-ccm03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-dlc1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-ect01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-egr01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-egr02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-evap01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-evap02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-fuel01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-misf01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-misf02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-misf03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-misf04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2s-01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2s-02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2s01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2s02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2s03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2s04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2sh01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2sh02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2sh03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2sh04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2shtr-01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2shtr-02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2shtr-03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2shtr01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2shtr02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2shtr03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-o2shtr04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-pcm64-1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-pcm80-1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\General Motors\Monitor\gm-pcm80-2.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\MIL\geo-mil01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-cat01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-cat02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-ccm01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-ccm02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-ccm03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-dlc1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-egr01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-egr02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-evap01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-evap02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-fuel01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-misf01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-misf02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-misf03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-misf04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-o2s-01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-o2s-02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-o2shtr-01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-o2shtr-02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-o2shtr-03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Geo\Monitor\geo-pcm64-1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\MIL\honda-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\MIL\honda-mil02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-air01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-cat01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-cat02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-cat03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-ccm01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-ccm02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-ccm03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-dlc1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-egr01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-egr02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-egr03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-evap01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-evap02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-evap03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-evap04.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-fuel01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-misf01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-misf02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-o2s-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-o2s-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-o2s-03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-o2shtr-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-o2shtr-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-o2shtr-03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-pcm104.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-pcm108.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Honda\Monitor\honda-pcm80.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\MIL\hyundai-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-cat01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-cat02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-ccm01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-ccm02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-ccm03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-dlc1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-egr01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-egr02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-evap01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-evap02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-fuel01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-misf01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-misf02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-o2s-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-o2s-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-o2shtr-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-o2shtr-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-pcm119.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Hyundai\Monitor\hyundai-pcm121.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\MIL\infiniti-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\MIL\infiniti-pats1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-cat01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-cat02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-ccm01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-ccm02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-ccm03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-dlc1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-egr01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-egr02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-egr03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-egr04.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-evap01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-evap02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-fuel01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-misf01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-misf02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-o2s-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-o2s-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-o2shtr-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-o2shtr-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Infiniti\Monitor\infiniti-pcm111.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\MIL\isuzu-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\MIL\isuzu-mil02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\MIL\isuzu-pats1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-air01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-air02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-cat01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-cat02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-cat03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-ccm01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-ccm02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-ccm03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-dlc1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-egr01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-egr02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-egr03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-evap01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-evap02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-evap03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-fuel01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-misf01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-misf02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-o2s-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-o2s-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-o2s-03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-o2shtr-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-o2shtr-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-o2shtr-03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Isuzu\Monitor\isuzu-pcm80.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\MIL\chrysler-mil01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\MIL\skim-key.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\MIL\skim-sys.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-cat01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-cat02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-ccm01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-ccm02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-ccm03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-dlc1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-ect01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-egr01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-egr02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-evap01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-evap02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-evap03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-evap04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-fuel01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-misf01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-misf02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-o2s01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-o2sh01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-o2sh02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-o2sh03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-o2sh04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-sair01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\chrysler-sair02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\pcm-119-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\pcm-60-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\pcm-80-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Jeep\Monitor\pcm-96-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\MIL\kia-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-cat01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-cat02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-cat03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-ccm01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-ccm02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-ccm03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-dlc1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-egr01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-egr02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-evap01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-evap02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-evap03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-fuel01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-misf01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-misf02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-o2s-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-o2s-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-o2shtr-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-o2shtr-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Kia\Monitor\kia-pcm56.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\MIL\lexus-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-cat01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-cat02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-ccm01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-ccm02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-ccm03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-dlc1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-egr01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-egr02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-egr03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-evap01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-evap02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-evap03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-evap04.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-fuel01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-misf01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-misf02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-o2s-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-o2s-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-o2shtr-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-o2shtr-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lexus\Monitor\lexus-pcm122.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\MIL\chrysler-mil01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\MIL\ford-mil01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\MIL\ford-pats1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\MIL\ford-pats2.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\MIL\skim-key.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\MIL\skim-sys.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-cat02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-ccm01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-ccm02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-ccm03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-dlc1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-ect01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-egr01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-egr02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-egr03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-egr04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-evap01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-evap02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-evap03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-evap04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-evap05.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-evap06.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-sair01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-sair02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\ford-sair03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\pcm-104-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Lincoln\Monitor\pcm-150-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\MIL\mazda-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\MIL\mazda-mil02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\MIL\mazda-pats1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\MIL\mazda-pats2.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-cat01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-cat02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-cat03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-cat04.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-cat05.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-ccm01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-ccm02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-ccm03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-dlc1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-egr01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-egr02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-egr03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-evap01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-evap02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-evap03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-evap04.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-evap05.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-fuel01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-misf01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-misf02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-o2s-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-o2s-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-o2s-03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-o2shtr-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-o2shtr-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-o2shtr-03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-o2shtr-04.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mazda\Monitor\mazda-pcm104.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\MIL\ford-mil01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\MIL\ford-pats1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\MIL\ford-pats2.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-cat02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-ccm01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-ccm02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-ccm03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-dlc1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-ect01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-egr01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-egr02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-egr03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-egr04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-evap01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-evap02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-evap03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-evap04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-evap05.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-evap06.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-sair01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-sair02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\ford-sair03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\pcm-104-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mercury\Monitor\pcm-150-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\MIL\mitsubishi-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\MIL\mitsubishi-pats1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-air01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-air02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-cat01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-cat02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-cat03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-ccm01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-ccm02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-ccm03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-dlc1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-egr01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-egr02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-egr03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-evap01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-evap02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-evap03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-evap04.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-evap05.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-fuel01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-misf01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-misf02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-o2s-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-o2s-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-o2s-03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-o2shtr-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-o2shtr-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-o2shtr-03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Mitsubishi\Monitor\mitsubishi-pcm130.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\MIL\nissan-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\MIL\nissan-pats1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-afs-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-afs-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-afs-03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-cat01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-cat02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-ccm01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-ccm02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-ccm03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-dlc1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-egr01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-egr02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-egr03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-egr04.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-evap01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-evap02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-fuel01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-misf01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-misf02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-o2s-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-o2s-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-o2shtr-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-o2shtr-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Nissan\Monitor\nissan-pcm88.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\MIL\chrysler-mil01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\MIL\skim-key.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\MIL\skim-sys.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-cat01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-cat02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-ccm01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-ccm02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-ccm03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-dlc1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-ect01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-egr01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-egr02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-evap01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-evap02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-evap03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-evap04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-fuel01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-misf01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-misf02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-o2s01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-o2sh01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-o2sh02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-o2sh03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-o2sh04.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-sair01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\chrysler-sair02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\pcm-119-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\pcm-60-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\pcm-80-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Plymouth\Monitor\pcm-96-pin.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\MIL\saturn-mil01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-air01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-air02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-cat01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-cat02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-ccm01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-ccm02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-ccm03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-dlc1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-ect01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-egr01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-egr02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-egr03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-evap01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-evap02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-evap03.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-fuel01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-misf01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-misf02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-o2s-01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-o2s-02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-o2shtr-01.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-o2shtr-02.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-pcm-j1.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Saturn\Monitor\saturn-pcm-j2.gif" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\MIL\subaru-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\MIL\subaru-mil02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-air01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-air02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-cat01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-cat02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-ccm01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-ccm02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-ccm03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-dlc1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-egr01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-egr02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-egr03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-egr04.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-evap01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-evap02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-evap03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-evap04.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-fuel01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-mil02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-misf01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-misf02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-o2s-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-o2s-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-o2shtr-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-o2shtr-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Subaru\Monitor\subaru-pcm93.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\MIL\suzuki-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\MIL\suzuki-mil02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-64pin.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-cat01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-cat02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-ccm01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-ccm02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-ccm03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-dlc1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-egr01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-egr02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-egr03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-egr04.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-evap01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-evap02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-evap03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-evap04.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-evap05.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-fuel01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-mil02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-misf01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-misf02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-o2s-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-o2s-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-o2shtr-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Suzuki\Monitor\suzuki-o2shtr-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\MIL\toyota-mil01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-cat01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-cat02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-ccm01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-ccm02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-ccm03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-dlc1.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-egr01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-egr02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-egr03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-egr04.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-evap01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-evap02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-evap03.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-evap04.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-evap05.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-fuel01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-misf01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-misf02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-o2s-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-o2s-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-o2shtr-01.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-o2shtr-02.GIF" />
+    <Content Include="Content\ErrorCodeInfo\Graphics\Toyota\Monitor\toyota-pcm105.GIF" />
+    <Content Include="Content\ErrorCodeInfo\i_Acura_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Acura_TCIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Chrysler_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Chrysler_PATS.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Daewoo_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Ford_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Ford_PATS.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Ford_TCIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_General Motors_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_General Motors_STS.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Honda_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Honda_TCIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Hyundai_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Infiniti_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Infiniti_PATS.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Isuzu_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Isuzu_PATS.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Isuzu_TCIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Kia_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Mazda_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Mazda_PATS.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Mazda_TCIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Mitsubishi_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Mitsubishi_PATS.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Nissan_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Nissan_PATS.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Saturn_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Subaru_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Subaru_TCIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Suzuki_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Suzuki_TCIL.html" />
+    <Content Include="Content\ErrorCodeInfo\i_Toyota_MIL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Acura_CAT1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Acura_CAT2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Acura_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Acura_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Acura_EGR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Acura_EGR2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Acura_EVAP1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Acura_EVAP2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Acura_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Acura_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Acura_O2S HTR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Acura_O2S HTR2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Acura_O2S1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Acura_O2S2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Acura_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Chrysler_AIR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Chrysler_CAT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Chrysler_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Chrysler_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Chrysler_EGR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Chrysler_EVAP.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Chrysler_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Chrysler_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Chrysler_O2S HTR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Chrysler_O2S HTR2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Chrysler_O2S HTR3.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Chrysler_O2S1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Chrysler_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Daewoo_CAT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Daewoo_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Daewoo_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Daewoo_EGR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Daewoo_EVAP.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Daewoo_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Daewoo_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Daewoo_O2S HTR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Daewoo_O2S.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Daewoo_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_AIR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_CAT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_EGR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_EGR2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_EGR3.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_EGR4.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_EGR5.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_EVAP1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_EVAP2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_EVAP3.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_EVAP4.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_O2S HTR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_O2S1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_O2S2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Ford_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_AIR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_CAT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_EGR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_EGR4.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_EVAP.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_EVAP4.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_FUEL4.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_MISFIRE4.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_O2S HTR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_O2S HTR2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_O2S HTR4.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_O2S1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_O2S2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_O2S3.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_O2S4.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_General Motors_PCM4.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Honda_CAT1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Honda_CAT2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Honda_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Honda_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Honda_EGR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Honda_EGR2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Honda_EVAP1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Honda_EVAP2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Honda_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Honda_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Honda_O2S HTR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Honda_O2S HTR2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Honda_O2S1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Honda_O2S2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Honda_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Hyundai_CAT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Hyundai_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Hyundai_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Hyundai_EGR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Hyundai_EVAP.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Hyundai_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Hyundai_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Hyundai_O2S HTR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Hyundai_O2S.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Hyundai_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Infiniti_CAT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Infiniti_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Infiniti_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Infiniti_EGR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Infiniti_EVAP.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Infiniti_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Infiniti_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Infiniti_O2S HTR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Infiniti_O2S.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Infiniti_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Isuzu_AIR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Isuzu_CAT1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Isuzu_CAT2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Isuzu_CAT3.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Isuzu_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Isuzu_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Isuzu_EGR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Isuzu_EVAP.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Isuzu_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Isuzu_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Isuzu_O2S HTR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Isuzu_O2S1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Isuzu_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Kia_CAT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Kia_CAT1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Kia_CAT2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Kia_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Kia_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Kia_EGR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Kia_EVAP.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Kia_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Kia_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Kia_O2S HTR2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Kia_O2S2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Kia_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mazda_CAT1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mazda_CAT2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mazda_CAT3.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mazda_CAT4.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mazda_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mazda_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mazda_EGR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mazda_EVAP.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mazda_EVAP1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mazda_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mazda_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mazda_O2S HTR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mazda_O2S HTR3.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mazda_O2S1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mazda_O2S2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mazda_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mitsubishi_AIR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mitsubishi_CAT1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mitsubishi_CAT2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mitsubishi_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mitsubishi_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mitsubishi_EGR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mitsubishi_EVAP.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mitsubishi_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mitsubishi_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mitsubishi_O2S HTR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mitsubishi_O2S HTR2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mitsubishi_O2S1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mitsubishi_O2S2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Mitsubishi_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Nissan_CAT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Nissan_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Nissan_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Nissan_EGR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Nissan_EVAP.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Nissan_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Nissan_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Nissan_O2S HTR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Nissan_O2S.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Nissan_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Saturn_AIR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Saturn_CAT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Saturn_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Saturn_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Saturn_EGR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Saturn_EVAP.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Saturn_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Saturn_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Saturn_O2S HTR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Saturn_O2S1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Saturn_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Subaru_AIR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Subaru_CAT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Subaru_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Subaru_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Subaru_EGR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Subaru_EVAP.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Subaru_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Subaru_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Subaru_O2S HTR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Subaru_O2S.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Subaru_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Suzuki_CAT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Suzuki_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Suzuki_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Suzuki_EGR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Suzuki_EVAP.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Suzuki_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Suzuki_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Suzuki_O2S HTR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Suzuki_O2S HTR2.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Suzuki_O2S.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Suzuki_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Toyota_CAT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Toyota_CCM.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Toyota_ECT.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Toyota_EGR.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Toyota_EVAP.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Toyota_FUEL.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Toyota_MISFIRE.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Toyota_O2S HTR1.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Toyota_O2S.html" />
+    <Content Include="Content\ErrorCodeInfo\mt_Toyota_PCM.html" />
+    <Content Include="Content\ErrorCodeInfo\styles.css" />
+    <Content Include="Content\kendo.default.min.css" />
+    <Content Include="Content\Scripts\AddMaintenancePlan.js" />
+    <Content Include="Content\Scripts\AddSymptom.js" />
+    <Content Include="Content\Scripts\AdminUserStatistics.js" />
+    <Content Include="Content\Scripts\EstimatedEarnings.js" />
+    <Content Include="Content\Scripts\ListMaintenancePlans.js" />
+    <Content Include="Content\Scripts\PartList.js" />
+    <Content Include="Content\Scripts\PartNameList.js" />
+    <Content Include="Content\Scripts\ServiceNameComponents.js" />
+    <Content Include="Content\Scripts\SymptomList.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Images\AccessDenied.png" />
+    <Content Include="Images\Global\ajax-loader.gif" />
+    <Content Include="Images\Global\get-help-icon.png" />
+    <Content Include="Images\Global\give-help-icon.png" />
+    <Content Include="Images\Global\logo.png" />
+    <Content Include="Images\Global\mag-glass.png" />
+    <Content Include="Images\Global\OBD-logo.png" />
+    <Content Include="Images\Global\RangePressed.gif" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\ConvertToCSV.js" />
+    <Content Include="Scripts\date.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\kendo.modernizr.custom.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\Reports\AddMaintenancePlan.js" />
+    <Content Include="Scripts\Reports\AddSymptom.js" />
+    <Content Include="Scripts\Reports\AdminUserStatistics.js" />
+    <Content Include="Scripts\Reports\EstimatedEarnings.js" />
+    <Content Include="Scripts\Reports\ListMaintenancePlans.js" />
+    <Content Include="Scripts\Reports\PartList.js" />
+    <Content Include="Scripts\Reports\PartNameList.js" />
+    <Content Include="Scripts\Reports\PredictiveDiagnosticReport.js" />
+    <Content Include="Scripts\Reports\RecallsReport.js" />
+    <Content Include="Scripts\Reports\ServiceNameComponents.js" />
+    <Content Include="Scripts\Reports\SymptomList.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Reports\AddEditPart.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Currency.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Email.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Integer.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Number.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\FixesPendingList\Index.cshtml" />
+    <Content Include="Views\DTC\DTCLookup.cshtml" />
+    <Content Include="Views\DTC\ChiltonDTCDefinitionList.cshtml" />
+    <Content Include="Views\Shared\_CarMDMenu.cshtml" />
+    <Content Include="Views\DTC\DTCCodeList.cshtml" />
+    <Content Include="Views\Fixes\FixList.cshtml" />
+    <Content Include="Views\Fixes\FixAddEdit.cshtml" />
+    <Content Include="Views\Shared\_SearchParts.cshtml" />
+    <Content Include="Views\Shared\_AddParts.cshtml" />
+    <Content Include="Views\Fixes\FixDetails.cshtml" />
+    <Content Include="Views\Shared\_DateRangeSelection.cshtml" />
+    <Content Include="Views\Fixes\FixNameList.cshtml" />
+    <Content Include="Views\Fixes\AddFixName.cshtml" />
+    <Content Include="Views\Reports\EstimatedEarnings.cshtml" />
+    <Content Include="Views\Repairs\RepairProcedureTester.cshtml" />
+    <Content Include="Views\Fixes\AddFixNameFragment.cshtml" />
+    <Content Include="Views\Fixes\_AddFixNameFragment.cshtml" />
+    <Content Include="Views\Reports\ServiceNameComponents.cshtml" />
+    <Content Include="Views\Reports\SymptomList.cshtml" />
+    <Content Include="Views\Reports\AddSymptom.cshtml" />
+    <Content Include="Views\Reports\ImportSymptoms.cshtml" />
+    <Content Include="Views\Reports\SymptomTester.cshtml" />
+    <Content Include="Views\Reports\PartList.cshtml" />
+    <Content Include="Views\Reports\PartNameList.cshtml" />
+    <Content Include="Views\Reports\MaintenancePlans.cshtml" />
+    <Content Include="Views\Reports\ListMaintenancePlans.cshtml" />
+    <Content Include="Views\Reports\AddMaintenancePlan.cshtml" />
+    <Content Include="Views\Vehicle\VehicleWarrantyList.cshtml" />
+    <Content Include="Views\Vehicle\AddVehicleWarranty.cshtml" />
+    <Content Include="Views\Reports\MaintenanceServices.cshtml" />
+    <Content Include="Views\Reports\NoFixReport.cshtml" />
+    <Content Include="Views\Reports\ServiceNameList.cshtml" />
+    <Content Include="Views\Reports\VinTester.cshtml" />
+    <Content Include="Views\Reports\UpdateNoFixReports.cshtml" />
+    <Content Include="Views\Reports\PredictiveDiagnosticReport.cshtml" />
+    <Content Include="Views\Reports\RecallsReport.cshtml" />
+    <Content Include="Views\Reports\VehicleReliabilityReport.cshtml" />
+    <Content Include="Views\Reports\UsedCarReport.cshtml" />
+    <Content Include="Views\Reports\AdminUserStatistics.cshtml" />
+    <Content Include="Views\Reports\FixDistributionReport.cshtml" />
+    <Content Include="Views\Admin\UserList.cshtml" />
+    <Content Include="Views\Admin\AddNewTechnician.cshtml" />
+    <Content Include="Views\Reports\OBDFixTechnicianStats.cshtml" />
+    <Content Include="Views\Reports\DiagnosticReportStats.cshtml" />
+    <Content Include="Views\Reports\DiagnosticReportTrends.cshtml" />
+    <Content Include="Views\Reports\AutoZoneBlackBoxReport.cshtml" />
+    <Content Include="Views\Reports\DtcDistributionReport.cshtml" />
+    <Content Include="Views\Tools\VinTester.cshtml" />
+    <Content Include="Views\Tools\SearchDTC.cshtml" />
+    <Content Include="Views\Reports\ReviewReports.cshtml" />
+    <Content Include="Views\Reports\UserDiagnosticReport.cshtml" />
+    <Content Include="Views\Reports\WhatFixedMyCar.cshtml" />
+    <Content Include="Views\Reports\SymptomDiagnosticExistingFixes.cshtml" />
+    <Content Include="Views\Fixes\PendingFixDetails.cshtml" />
+    <Content Include="Views\Fixes\OdbFixSummary.cshtml" />
+    <Content Include="Views\Fixes\GiveAFix.cshtml" />
+    <Content Include="Views\Fixes\GiveFixDetails.cshtml" />
+    <Content Include="Views\Admin\UpdateAdminUser.cshtml" />
+    <Content Include="Views\Admin\ViewAdminUser.cshtml" />
+    <Content Include="Views\Fixes\GetFix.cshtml" />
+    <Content Include="Views\FixNameFixes\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\makesStringDropDownList.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\partNameDropDownList.cshtml" />
+    <Content Include="Views\Technician\TechnicianUserEdit.cshtml" />
+    <Content Include="Views\Reports\_PartialFixNameView.cshtml" />
+    <Content Include="Views\Customers\ErrorCodeList.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SymptomType.cshtml" />
+    <Content Include="Views\User\UserDetail.cshtml" />
+    <Content Include="Views\Admin\AdminUserList.cshtml" />
+    <Content Include="Views\Account\AccessDenied.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Customers\ErrorCodeFileDisplay.cshtml" />
+    <Content Include="Views\Reports\EstimatedEarningsBatchReport.cshtml" />
+    <Content Include="Views\Reports\EstimatedEarningsDetails.cshtml" />
+    <Content Include="Views\RoleManagement\RoleAssign.cshtml" />
+    <Content Include="Views\RoleManagement\Index.cshtml" />
+    <Content Include="Views\Fixes\FixesImportData.cshtml" />
+    <Content Include="Views\User\AdminUserAddEdit.cshtml" />
+    <Content Include="Views\User\MyProfile.cshtml" />
+    <Content Include="Views\Reports\MasterTechEstimatedEarning.cshtml" />
+    <Content Include="Views\OdbFixSummary\Index.cshtml" />
+    <Content Include="Views\FixList\AddFixNameFragment.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Site.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\box-sizing-fixes.css" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Upload\" />
+    <Folder Include="Views\ChiltonDTCDefinitionList\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarMD.Shared\CarMD.Shared.csproj">
+      <Project>{E9D40F2E-E9CC-4C70-8017-768B34E4236E}</Project>
+      <Name>CarMD.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50237</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50237/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <UserProperties UseCdnSupport="True" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

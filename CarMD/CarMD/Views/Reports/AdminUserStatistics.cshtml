@@ -1,0 +1,152 @@
+
+@{
+    ViewBag.Title = "Admin User Statistics";
+}
+
+<div class="container-fluid">
+    <div class="row my-2">
+        <div class="col-md">
+            <h1>Admin User Statistics</h1>
+        </div>
+    </div>
+    <div class="border p-3">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label("User")
+                <br />
+                <input id="User_ddl" value="1" style="width: 60%;" />
+
+            </div>
+            <div class="col-md-4">
+                <div style="padding-left:1px">
+                    @Html.Label("Date Range From") <br />
+                    @Html.Kendo().DatePicker().Name("dpkDateRangeFrom")
+                </div>
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Date Range To")<br />
+                @Html.Kendo().DatePicker().Name("dpkDateRangeTo")
+                @Html.Partial("_DateRangeSelection")
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @(Html.Kendo().Button()
+                                        .Name("RunReport")
+                                        .Content("Run Report")
+                                        .HtmlAttributes(new { @class = "k-primary mt-4" })
+                )
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            @(Html.Kendo().Grid<CarMD.Shared.Models.AdminUserStatisticModel>()
+                              .Name("grid")
+                              .Columns(columns =>
+                              {
+                                  columns.Bound(p => p.User).Title("User");
+                                  columns.Bound(p => p.ReportsClosedNewFixAdded).Title("Reports Closed<br/>(New Fix Added)");
+                                  columns.Bound(p => p.ReportsClosedExistingFixSelected).Title("Reports Closed<br/>(Existing Fix Selected)");
+                                  columns.Bound(p => p.ReportsClosedRejected).Title("Reports Closed<br/>(Rejected)");
+                                  columns.Bound(p => p.NumOfFixesFromFixReport).Title("# of Fixes from Fix<br/> Report");
+                                  columns.Bound(p => p.NumOfDirectFixes).Title("# of Direct Fixes");
+                                  columns.Bound(p => p.NumOfTotalReport).Title("Total Reports");
+                              })
+                              //.Editable(editable => editable.Mode(GridEditMode.InLine).DisplayDeleteConfirmation(false))
+                              .Pageable(pageable => pageable.PageSizes(new[] { "10", "25", "50", "75", "100" }))
+                              .Sortable()
+                              .HtmlAttributes(new { /*style = "height:603px;"*/ })
+                              .DataSource(dataSource => dataSource
+                              .Ajax()
+                              .ServerOperation(true)
+                              .Batch(true)
+                              .Model(model =>
+                              {
+                                  model.Id(p => p.User);
+                              })
+                              .PageSize(10)
+                              .Read(read => read.Action("GetAdminUserStatics", "AdminUserStatistics").Data("getParameter"))
+                               )
+            )
+           
+        </div>
+    </div>
+</div>
+<div id="loaderImg" class="modal"></div>
+<script type="text/javascript">
+    function getParameter() {
+        return {
+            UserID: $('#User_ddl').val(),
+            StartDate: $('#dpkDateRangeFrom').val(),
+            EndDate: $('#dpkDateRangeTo').val()
+        };
+    }
+    $('#RunReport').click(function () {
+        //$("#grid").data("kendoGrid").dataSource.page(1)
+        //$("#grid").data("kendoGrid").dataSource.read();
+        //$("#grid").data("kendoGrid").refresh();
+
+        var grid = $("#grid").data("kendoGrid");
+        grid.dataSource.read();        
+    });
+
+    //show server errors if any
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+
+        }
+    }
+
+    function BindFixNameDropdown() {
+        // create DropDownList from input HTML element
+        $("#User_ddl").kendoDropDownList({
+            dataTextField: "FirstName",
+            dataValueField: "AdminUserID",
+            dataSource: fixNameFixesList,
+            index: 0,
+            change: onChange
+        });
+        var color = $("#User_ddl").data("kendoDropDownList");
+
+        color.select(0);
+        function onChange() {
+
+        };
+    }
+    var fixNameFixesList = [];
+    $.ajax({
+        url: "/AdminUserStatistics/GetUserDropDown",
+        type: "GET",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        dataType: "json",
+        beforeSend: function () {
+            $("#loaderImg").show();
+        },
+        success: function (result) {
+            console.log('result', result);
+            $('#loaderImg').hide();
+            fixNameFixesList = result;
+            BindFixNameDropdown();
+        },
+        error: function (httpRequest, textStatus, errorThrown) {
+            alert("Error: " + textStatus + " " + errorThrown + " " + httpRequest);
+        },
+        complete: function () {
+            $('#loaderImg').hide();
+        }
+    });
+
+
+</script>

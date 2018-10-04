@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="79159fe976424de5991e42441b220b77" Name="Diagram1" ZoomLevel="35">
+        <<<<<<< HEAD
+        
+        
+        <EntityTypeShape EntityType="CarMDModel.AdminUser" Width="1.5" PointX="9.2335872450999865" PointY="8.389666784736173" />
+        <EntityTypeShape EntityType="CarMDModel.AppForm" Width="1.5" PointX="0.69487620177440168" PointY="6.6609881700300555" />
+        <EntityTypeShape EntityType="CarMDModel.Article" Width="1.5" PointX="8.9592358250912447" PointY="7.4740474556917542" />
+        <EntityTypeShape EntityType="CarMDModel.CodeMasterIDPart" Width="1.5" PointX="9.23463882190857" PointY="5.0345540964205533" />
+        <EntityTypeShape EntityType="CarMDModel.CodeMasterIDPartLocation" Width="1.5" PointX="6.281979301144359" PointY="16.617628850330426" />
+        <EntityTypeShape EntityType="CarMDModel.CurrencyExchangeRate" Width="1.5" PointX="0.6821368935900447" PointY="12.717642223796641" />
+        <EntityTypeShape EntityType="CarMDModel.Device" Width="1.5" PointX="6.7759990909956382" PointY="4.8584523372624311" />
+        <EntityTypeShape EntityType="CarMDModel.DiagnosticReport" Width="1.5" PointX="9.9565611844680078" PointY="2.7511894119676152" />
+        <EntityTypeShape EntityType="CarMDModel.DiagnosticReportExternalSystemReportId" Width="1.5" PointX="9.32553555505608" PointY="13.577828517918395" />
+        <EntityTypeShape EntityType="CarMDModel.DiagnosticReportFeedback" Width="1.5" PointX="3.1103630955844945" PointY="4.682241009866" />
+        <EntityTypeShape EntityType="CarMDModel.DiagnosticReportFixFeedback" Width="1.5" PointX="10.258841340550614" PointY="13.778069442966054" />
+        <EntityTypeShape EntityType="CarMDModel.DiagnosticReportMasterTechUser" Width="1.5" PointX="4.4729374127802153" PointY="13.075853786000915" />
+        <EntityTypeShape EntityType="CarMDModel.DiagnosticReportResult" Width="1.5" PointX="8.0401044637151546" PointY="16.610270239696963" />
+        <EntityTypeShape EntityType="CarMDModel.DiagnosticReportResultErrorCode" Width="1.5" PointX="5.0640301634855707" PointY="5.5322998191846064" />
+        <EntityTypeShape EntityType="CarMDModel.DiagnosticReportResultFix" Width="1.5" PointX="10.722568317652945" PointY="0.66344845325846613" />
+        <EntityTypeShape EntityType="CarMDModel.dr_fix_map" Width="1.5" PointX="8.1281283833683133" PointY="23.282797332519106" />
+        <EntityTypeShape EntityType="CarMDModel.DTCCode" Width="1.5" PointX="10.976951278269734" PointY="0.81220439114244858" />
+        <EntityTypeShape EntityType="CarMDModel.DTCEngineType" Width="1.5" PointX="3.1602111119591685" PointY="30.407845004651623" />
+        <EntityTypeShape EntityType="CarMDModel.DTCMake" Width="1.5" PointX="10.468212290885026" PointY="23.063878159534131" />
+        <EntityTypeShape EntityType="CarMDModel.DTCModel" Width="1.5" PointX="0.25703794521141704" PointY="14.126298821590048" />
+        <EntityTypeShape EntityType="CarMDModel.DTCModel_ByCleanModel" Width="1.5" PointX="2.9449457558546897" PointY="25.681564030089213" />
+        <EntityTypeShape EntityType="CarMDModel.DTCTransmission" Width="1.5" PointX="10.473814576153558" PointY="0.36462599056056977" />
+        <EntityTypeShape EntityType="CarMDModel.DTCTrimLevel" Width="1.5" PointX="8.2662454621243491" PointY="1.5064601756196749" />
+        <EntityTypeShape EntityType="CarMDModel.DTCYear" Width="1.5" PointX="8.0555071272214445" PointY="13.713413706847193" />
+        <EntityTypeShape EntityType="CarMDModel.ExternalSystem" Width="1.5" PointX="1.7384628326345526" PointY="2.8503846092384237" />
+        <EntityTypeShape EntityType="CarMDModel.ExternalSystemTransaction" Width="1.5" PointX="1.1151278843708001" PointY="15.525861136394488" />
+        <EntityTypeShape EntityType="CarMDModel.Fix" Width="1.5" PointX="8.5356319400182148" PointY="31.371711671059817" />
+        <EntityTypeShape EntityType="CarMDModel.fix_polk_map" Width="1.5" PointX="8.686702724865965" PointY="10.844829877300574" />
+        <EntityTypeShape EntityType="CarMDModel.FixComment" Width="1.5" PointX="10.67318763149585" PointY="20.777149418730826" />
+        <EntityTypeShape EntityType="CarMDModel.FixCommentUserLastViewed" Width="1.5" PointX="6.4577661000461166" PointY="7.2810252938796882" />
+        <EntityTypeShape EntityType="CarMDModel.FixDTC" Width="1.5" PointX="9.7387376323988377" PointY="19.093403705904915" />
+        <EntityTypeShape EntityType="CarMDModel.FixEngineType" Width="1.5" PointX="3.1653894685047632" PointY="16.088496349793157" />
+        <EntityTypeShape EntityType="CarMDModel.FixGeneration" Width="1.5" PointX="10.103482435505596" PointY="10.536234383721014" />
+        <EntityTypeShape EntityType="CarMDModel.FixMake" Width="1.5" PointX="5.792164555654006" PointY="17.257126518179255" />
+        <EntityTypeShape EntityType="CarMDModel.FixModel" Width="1.5" PointX="10.661708514514244" PointY="28.1429848205964" />
+        <EntityTypeShape EntityType="CarMDModel.FixName" Width="1.5" PointX="2.56348373860283" PointY="1.8042166539487508" />
+        <EntityTypeShape EntityType="CarMDModel.FixNameFragment" Width="1.5" PointX="4.8346477490079813" PointY="26.168002766635269" />
+        <EntityTypeShape EntityType="CarMDModel.FixPart" Width="1.5" PointX="10.810894622845062" PointY="1.6753462113790896" />
+        <EntityTypeShape EntityType="CarMDModel.FixPolkVehicleDiscrepancy" Width="1.5" PointX="6.6929614649587137" PointY="11.563207110186669" />
+        <EntityTypeShape EntityType="CarMDModel.FixSymptom" Width="1.5" PointX="8.6371997076259923" PointY="19.933818394287403" />
+        <EntityTypeShape EntityType="CarMDModel.FixTransmission" Width="1.5" PointX="10.173344212664919" PointY="31.790666729114328" />
+        <EntityTypeShape EntityType="CarMDModel.FixTrimLevel" Width="1.5" PointX="0.33614959955967483" PointY="25.743130904502763" />
+        <EntityTypeShape EntityType="CarMDModel.FixYear" Width="1.5" PointX="11.133665285601126" PointY="6.149147885921014" />
+        <EntityTypeShape EntityType="CarMDModel.FormPermissionByRoles" Width="1.5" PointX="0.19541705967645023" PointY="29.900158404326142" />
+        <EntityTypeShape EntityType="CarMDModel.Location" Width="1.5" PointX="3.6178739218124534" PointY="29.58239975459054" />
+        <EntityTypeShape EntityType="CarMDModel.ManageSearchCount" Width="1.5" PointX="0.72975424524850885" PointY="7.1380833569625777" />
+        <EntityTypeShape EntityType="CarMDModel.ObdFixPaymentSchedule" Width="1.5" PointX="2.1911882097791824" PointY="25.404409226684091" />
+        <EntityTypeShape EntityType="CarMDModel.OLD_CodeMasterIDPart" Width="1.5" PointX="7.5586244256974311" PointY="20.759784976374259" />
+        <EntityTypeShape EntityType="CarMDModel.OLD_CodeMasterIDPartLocation" Width="1.5" PointX="6.4651970427786916" PointY="11.841675853282993" />
+        <EntityTypeShape EntityType="CarMDModel.OLD_fix" Width="1.5" PointX="2.0332523109546177" PointY="11.507086848610587" />
+        <EntityTypeShape EntityType="CarMDModel.OLD_Fix_Part" Width="1.5" PointX="6.7727580102033711" PointY="4.2242258210779289" />
+        <EntityTypeShape EntityType="CarMDModel.Old_FixComment" Width="1.5" PointX="6.4808216255534532" PointY="8.492916066429073" />
+        <EntityTypeShape EntityType="CarMDModel.Old_FixNameFragment" Width="1.5" PointX="10.505410489861578" PointY="1.1694577043733829" />
+        <EntityTypeShape EntityType="CarMDModel.Old_Part" Width="1.5" PointX="0.98755017713995186" PointY="28.593682406746634" />
+        <EntityTypeShape EntityType="CarMDModel.Old_PartName" Width="1.5" PointX="0.95349725380237094" PointY="21.489194388263485" />
+        <EntityTypeShape EntityType="CarMDModel.Part" Width="1.5" PointX="9.3738497390290014" PointY="16.898626573802265" />
+        <EntityTypeShape EntityType="CarMDModel.PartMake" Width="1.5" PointX="11.154231324398065" PointY="29.28689120583557" />
+        <EntityTypeShape EntityType="CarMDModel.PartName" Width="1.5" PointX="4.5570402725399664" PointY="26.179300290615902" />
+        <EntityTypeShape EntityType="CarMDModel.PolkVehicleUSManufacturerYearStats" Width="1.5" PointX="6.8238767901546682" PointY="14.697907678176605" />
+        <EntityTypeShape EntityType="CarMDModel.PolkVehicleUSStats" Width="1.5" PointX="6.89952084557131" PointY="20.793471942093909" />
+        <EntityTypeShape EntityType="CarMDModel.PolkVehicleUSStatsGrouped" Width="1.5" PointX="3.7556708342189298" PointY="17.545613744084545" />
+        <EntityTypeShape EntityType="CarMDModel.PolkVehicleUSVehicleClassYearStats" Width="1.5" PointX="2.8535485225047674" PointY="30.848822950780775" />
+        <EntityTypeShape EntityType="CarMDModel.PolkVehicleYMME" Width="1.5" PointX="9.8238650624751429" PointY="31.697873279311636" />
+        <EntityTypeShape EntityType="CarMDModel.Recall" Width="1.5" PointX="10.485393035451597" PointY="19.487984770670526" />
+        <EntityTypeShape EntityType="CarMDModel.Recall_ByCleanModel" Width="1.5" PointX="2.2543766117907951" PointY="8.06926735121257" />
+        <EntityTypeShape EntityType="CarMDModel.Regions" Width="1.5" PointX="6.1630577864884675" PointY="6.0062213866069083" />
+        <EntityTypeShape EntityType="CarMDModel.Role" Width="1.5" PointX="2.3029503553653834" PointY="11.525445705058726" />
+        <EntityTypeShape EntityType="CarMDModel.ScheduleMaintenancePlan" Width="1.5" PointX="0.702423887654405" PointY="22.904692079361851" />
+        <EntityTypeShape EntityType="CarMDModel.ScheduleMaintenancePlanDetail" Width="1.5" PointX="5.4406783978644189" PointY="24.403482865730059" />
+        <EntityTypeShape EntityType="CarMDModel.ScheduleMaintenanceService" Width="1.5" PointX="11.148263599326958" PointY="28.52031639056295" />
+        <EntityTypeShape EntityType="CarMDModel.StateLaborRate" Width="1.5" PointX="1.3183802800804285" PointY="3.9274297523905664" />
+        <EntityTypeShape EntityType="CarMDModel.Symptom" Width="1.5" PointX="10.259062147819932" PointY="20.158469403236392" />
+        <EntityTypeShape EntityType="CarMDModel.SymptomFragment" Width="1.5" PointX="1.7195501689424506" PointY="17.047384746860427" />
+        <EntityTypeShape EntityType="CarMDModel.User" Width="1.5" PointX="3.5225499344629005" PointY="8.5562773535755827" />
+        <EntityTypeShape EntityType="CarMDModel.UserRoleManager" Width="1.5" PointX="4.9696131874665674" PointY="25.977031511243911" />
+        <EntityTypeShape EntityType="CarMDModel.UserStatusChange" Width="1.5" PointX="0.96104257598567877" PointY="2.5426177692332388" />
+        <EntityTypeShape EntityType="CarMDModel.Vehicle" Width="1.5" PointX="9.5411075994098127" PointY="16.628534220451737" />
+        <EntityTypeShape EntityType="CarMDModel.Vehicle_Warranty" Width="1.5" PointX="0.55948673401004023" PointY="0.51507428312444792" />
+        <EntityTypeShape EntityType="CarMDModel.Vehicle_Warranty_Detail" Width="1.5" PointX="10.730536160399456" PointY="18.4333680506951" />
+        <EntityTypeShape EntityType="CarMDModel.VehicleManufacturerAlternateName" Width="1.5" PointX="5.360978462435761" PointY="28.316554693652574" />
+        <EntityTypeShape EntityType="CarMDModel.VehicleType" Width="1.5" PointX="1.9531536036884196" PointY="15.145482368369345" />
+        <EntityTypeShape EntityType="CarMDModel.VehicleTypeCode" Width="1.5" PointX="8.4682542907391927" PointY="26.473391992260417" />
+        <EntityTypeShape EntityType="CarMDModel.VehicleTypeCodeAssignment" Width="1.5" PointX="1.8953901091103393" PointY="18.990711250803766" />
+        <EntityTypeShape EntityType="CarMDModel.VehicleWarrantyDetail" Width="1.5" PointX="4.0340346098104654" PointY="18.219171160002784" />
+        <EntityTypeShape EntityType="CarMDModel.VehicleYMME" Width="1.5" PointX="10.280160314533934" PointY="21.247415314078058" />
+        <EntityTypeShape EntityType="CarMDModel.ZZ_DiagnosticReport" Width="1.5" PointX="4.376559211116545" PointY="25.793521908015723" />
+        <EntityTypeShape EntityType="CarMDModel.ZZF_DiagnosticReport" Width="1.5" PointX="6.3634517799892709" PointY="21.878405864293875" />
+        <EntityTypeShape EntityType="CarMDModel.ZZF_DiagnosticReportResult" Width="1.5" PointX="6.4791716982047873" PointY="6.0876924721932468" />
+        <EntityTypeShape EntityType="CarMDModel.ZZF_Fix" Width="1.5" PointX="8.3205430062117731" PointY="19.45099332344299" />
+        <EntityTypeShape EntityType="CarMDModel.ZZF_FixYMMETTE" Width="1.5" PointX="9.84875843760034" PointY="9.1495887530732851" />
+        <EntityTypeShape EntityType="CarMDModel.ZZF_YMMETTE" Width="1.5" PointX="8.3641525452789622" PointY="19.404770740962014" />
+        <EntityTypeShape EntityType="CarMDModel.zzz_DiagnosticReportResult" Width="1.5" PointX="2.3383811015348792" PointY="12.034639453531542" />
+        <EntityTypeShape EntityType="CarMDModel.temp_dtc_ymme_map_4" Width="1.5" PointX="2.0649326807190351" PointY="13.892202994736007" />
+        <EntityTypeShape EntityType="CarMDModel.temp_fix_map_4" Width="1.5" PointX="4.7112254205677777" PointY="21.512666727189284" />
+        <EntityTypeShape EntityType="CarMDModel.temp_fix_map_4_OLD" Width="1.5" PointX="3.7625554053869825" PointY="1.3580560839539655" />
+        <EntityTypeShape EntityType="CarMDModel.temp_fixyymme_base02" Width="1.5" PointX="9.85872336936124" PointY="28.07510767694335" />
+        <EntityTypeShape EntityType="CarMDModel.zz_nums" Width="1.5" PointX="3.7903276122130114" PointY="1.4121482378859764" />
+        <EntityTypeShape EntityType="CarMDModel.ZZF_DiagnosticReportResult_OLD" Width="1.5" PointX="8.7419650427726872" PointY="20.370198378511798" />
+        <EntityTypeShape EntityType="CarMDModel.ZZF_FixName" Width="1.5" PointX="5.0045318664072695" PointY="0.88410706859273236" />
+        <EntityTypeShape EntityType="CarMDModel.ZZF_FixPolkVehicleDiscrepancy" Width="1.5" PointX="5.6640359171033072" PointY="17.594755866376104" />
+        <EntityTypeShape EntityType="CarMDModel.ZZF_Part" Width="1.5" PointX="2.3587346702621943" PointY="23.174295331898282" />
+        <EntityTypeShape EntityType="CarMDModel.ZZF_PartName" Width="1.5" PointX="4.9284436930569093" PointY="24.004886519166121" />
+        <EntityTypeShape EntityType="CarMDModel.ZZF_Symptom" Width="1.5" PointX="5.3648276055999222" PointY="8.7692582946127544" />
+        <EntityTypeShape EntityType="CarMDModel.ZZF_SymptomDiagnosticReportItem" Width="1.5" PointX="6.5900298834731936" PointY="3.5645477341322915" />
+        <EntityTypeShape EntityType="CarMDModel.ZZF_SymptomFragment" Width="1.5" PointX="11.756528634464615" PointY="27.404272151833528" />
+        <AssociationConnector Association="CarMDModel.fk_fix_polk_map_02" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

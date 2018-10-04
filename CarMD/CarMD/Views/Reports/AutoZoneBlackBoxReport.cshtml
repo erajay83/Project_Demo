@@ -1,0 +1,157 @@
+﻿@{
+    ViewBag.Title = "AutoZone Black Box Diagnostic Reports";
+}
+
+<script src="~/Scripts/ConvertToCSV.js"></script>
+
+<div class="container-fluid">
+    <div class="row my-2">
+        <div class="col-md">
+            <h2>AutoZone Black Box Diagnostic Reports</h2>
+        </div>
+    </div>
+    <div class="border p-3">
+        <div class="row mb-3">
+            <div class="col-md">
+                This report provides information about reports created via the AutoZone black box.
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label("Date Range from") <br />
+                @Html.Kendo().DatePicker().Name("dpkDateRangeFrom")
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Date Range to")<br />
+                @Html.Kendo().DatePicker().Name("dpkDateRangeTo")
+                @Html.Partial("_DateRangeSelection")
+            </div>
+            <div class="col-md-4">
+                @(Html.Kendo().Button()
+                                .Name("btnRunReport")
+                                .Content("Run Report")
+                                .HtmlAttributes(new { @class = "k-primary mt-3" })
+                )
+                @(Html.Kendo().Button()
+                                .Name("btnExportToExcel")
+                                .Content("Download Report as Excel")
+                                .HtmlAttributes(new { @class = "k-primary mt-3 ml-3" })
+                )
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-12">
+            @(Html.Kendo().Grid<CarMD.Shared.Models.AutoZoneBlackBoxGrid>()
+                                              .Name("grid")
+                                              .Columns(columns =>
+                                              {
+                                                  columns.Bound(p => p.ExternalSystemReportId).Title("Auto Zone Report ID");
+                                                  columns.Bound(p => p.ReportDateStr).Title("Report Date");
+                                                  columns.Bound(p => p.ReportTimeStr).Title("Report Time");
+                                                  columns.Bound(p => p.Email).Title("Email");
+                                                  columns.Bound(p => p.Year).Title("Year");
+                                                  columns.Bound(p => p.Make).Title("Make");
+                                                  columns.Bound(p => p.Model).Title("Model");
+                                                  columns.Bound(p => p.EngineType).Title("Engine Type");
+                                                  columns.Bound(p => p.TransmissionControlType).Title("Transmission");
+                                                  columns.Bound(p => p.ToolLEDStatus).Title("LED Status");
+                                                  columns.Bound(p => p.Description).Title("Job Description");
+
+                                              })
+                                              //.Editable(editable => editable.Mode(GridEditMode.InLine).DisplayDeleteConfirmation(false))
+                                              .Pageable(pageable => pageable.PageSizes(new[] { "10", "25", "50", "75", "100" }))
+                                              .Sortable()
+                                              .HtmlAttributes(new { /*style = "height:603px;"*/ })
+                                              .DataSource(dataSource => dataSource
+                                              .Ajax()
+                                              .ServerOperation(true)
+                                              .Batch(true)
+                                              .Model(model =>
+                                              {
+                                                  model.Id(p => p.ExternalSystemReportId);
+                                              })
+                                              .PageSize(10)
+                                              .Read(read => read.Action("GetAutoZoneBlackBoxGrid", "AutoZoneBlackBoxReport").Data("getParameter"))
+                                               )
+            )
+
+        </div>
+    </div>
+    <div id="loaderImg" class="modal"></div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnExportToExcel').click(function () {
+            ExportExcel();
+        });
+    });
+
+    function getParameter() {
+        return {
+            StartTime: $('#dpkDateRangeFrom').val(),
+            EndTime: $('#dpkDateRangeTo').val()
+        };
+    }
+
+    $('#btnRunReport').click(function () {
+        //$("#grid").data("kendoGrid").dataSource.page(1)
+        //$("#grid").data("kendoGrid").dataSource.read();
+        //$("#grid").data("kendoGrid").refresh();
+
+        var grid = $("#grid").data("kendoGrid");
+        grid.dataSource.read();        
+    });
+
+    //show server errors if any
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+
+        }
+    }
+
+    function ExportExcel() {
+
+        GetExcelData();
+    }
+
+    function GetExcelData() {
+        var jsonData = {
+            SystemID: $("#SystemList_ddl").val() == "No Selection" ? "" : $("#SystemList_ddl").val(),
+            StartDateTime: $('#dpkDateRangeFrom').val(),
+            EndDateTime: $('#dpkDateRangeTo').val(),
+            GroupBy: $('#ddnGroupBy').val()
+        };
+        $.ajax({
+            url: "/AutoZoneBlackBoxReport/GetExcelJason",
+            type: "POST",
+            data: JSON.stringify({ 'model': jsonData }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            beforeSend: function () {
+                $("#loaderImg").show();
+            },
+            success: function (result) {
+                $('#loaderImg').hide();
+                // Generate Excelreport
+                JSONToCSVConvertor(JSON.stringify(result), "AutoZoneBlackBoxReport", true);
+
+            },
+            error: function (httpRequest, textStatus, errorThrown) {
+                alert("Error: " + textStatus + " " + errorThrown + " " + httpRequest);
+            },
+            complete: function () {
+                $('#loaderImg').hide();
+            }
+        });
+    }
+</script>

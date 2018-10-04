@@ -1,0 +1,71 @@
+﻿@model CarMD.Shared.Models.UserLoginModel
+@{
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+
+<link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/box-sizing-fixes.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo.default.min.css" rel="stylesheet" />
+<link href="~/Content/Common/common.css" rel="stylesheet" />
+<script src="https://kendo.cdn.telerik.com/2018.2.516/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2018.2.516/js/jszip.min.js"></script>
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    <div class="navbar navbar-inverse navbar-fixed-top header">
+        <div class="container-fluid">
+            <span class="brand"></span> <div id="menu-inside">
+                <ul class="k-widget k-reset k-header k-menu k-menu-horizontal" id="menu" data-role="menu" tabindex="0" role="menubar">
+                    <li class="k-item k-state-default k-first" role="menuitem">
+                        <a style="display:none;" class="k-link k-menu-link" href="javascript:window.open('http://dev27/obdfix.webapp/Tour/Default.aspx','tour','resizable=1,menubar=0,scrollbars=0,width=785,height=540')">Tour</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="body-content">
+        <div class="container-fluid">
+            <div class="row my-2">
+                <div class="col-md">
+                    <h2>Login</h2> <br />
+                    <p> Welcome. If you already have an account, please login below.</p>
+                </div>
+            </div>
+            <div class="border p-3">
+                <div class="row margin-top-15" style="margin-left:10%;">
+                    <div class="col-md-12">
+                        @Html.Label("UserName")<br />
+                        @Html.TextBoxFor(Model => Model.EmailAddress, new { @class = "k-textbox", @style = "margin-bottom:15px;width:100%;" })
+                        @Html.ValidationMessageFor(Model => Model.EmailAddress, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="col-md-12">
+                        @Html.Label("Password")<br />
+                        @Html.TextBoxFor(Model => Model.Password, new { @type = "password", @class = "k-textbox", @style = "margin-bottom:15px;width:100%;" })
+                        @Html.ValidationMessageFor(Model => Model.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-12">
+                        @Html.Kendo().Button().Name("btnLogin").Content("Login").HtmlAttributes(new { type = "submit", @class = "k-primary k-button", style = "cursor:pointer" })
+                    </div>
+                    <div class="col-md-12 margin-top-15">
+                        @Html.Label("User Does Not Exist!",new { id="lblMessage", style="display:none;color:red;"})
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+        
+            if ('@ViewBag.IsUserExist' == "False")
+            {
+                $("#lblMessage").show();
+            }
+        });
+
+    </script>
+}
+
+
